@@ -32,12 +32,34 @@ class VideoModerationResult(ModerationResult):
     is_low_quality: bool = Field(description="Whether the video is low quality")
 
 
-# TODO: Create AudioModerationResult class that inherits from ModerationResult and contains:
-#   - transcription: str to contain the transcription of the audio
-#   - contains_pii: bool to contain a flag for whether the audio contains any personally-identifiable
-#       information (PII) such as names, addresses, phone numbers
-#   - is_unfriendly: bool to contain a flag for whether unfriendly tone or content was detected
-#   - is_unprofessional: bool to contain a flag for whether unprofessional tone or content was detected
 class AudioModerationResult(ModerationResult):
-
-    ...  # Replace with your implementation
+    """
+    Moderation result for an audio clip.
+    
+    Attributes
+    ----------
+    transcription : str
+        The full transcript of the audio content.
+    contains_pii : bool
+        Flag indicating whether the audio contains any personally-identifiable information (PII)
+        such as names, addresses, phone numbers, etc.
+    is_unfriendly : bool
+        Flag indicating whether an unfriendly tone or content was detected in the audio.
+    is_unprofessional : bool
+        Flag indicating whether an unprofessional tone or content was detected in the audio.
+    """
+    transcription: str = Field(
+        description="The full transcript of the audio content."
+    )
+    contains_pii: bool = Field(
+        description=(
+            "Whether the audio contains any personally-identifiable information (PII) "
+            "such as names, addresses, phone numbers, etc."
+        )
+    )
+    is_unfriendly: bool = Field(
+        description="Whether an unfriendly tone or content was detected in the audio."
+    )
+    is_unprofessional: bool = Field(
+        description="Whether an unprofessional tone or content was detected in the audio."
+    )
